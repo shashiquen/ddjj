@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2017 23:12:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="ddjj" name="aplicacion.modelo.dominio.CargosDeclarado" optimistic-lock="version" table="cargos_declarados">
+    <id name="codigo" type="int">
+      <column name="codigo"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.Agente" fetch="select" name="agentes">
+      <column name="agente" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="aplicacion.modelo.dominio.Funcion" fetch="join" name="funciones">
+      <column name="funcion" not-null="true"/>
+    </many-to-one>
+    <property name="dependencia" type="string">
+      <column length="45" name="dependencia" not-null="true"/>
+    </property>
+    <property name="imputacionPresupuestaria" type="string">
+      <column length="45" name="imputacion_presupuestaria" not-null="true"/>
+    </property>
+    <property name="calle" type="string">
+      <column length="45" name="calle" not-null="true"/>
+    </property>
+    <property name="numCalle" type="int">
+      <column name="num_calle" not-null="true"/>
+    </property>
+    <property name="localidad" type="string">
+      <column length="45" name="localidad" not-null="true"/>
+    </property>
+    <property name="provincia" type="string">
+      <column length="45" name="provincia" not-null="true"/>
+    </property>
+    <property name="fechaIngreso" type="date">
+      <column length="10" name="fecha_ingreso" not-null="true"/>
+    </property>
+    <property name="estadoCargo" type="string">
+      <column length="45" name="estado_cargo" not-null="true"/>
+    </property>
+    <property name="estado" type="boolean">
+      <column name="estado" not-null="true"/>
+    </property>
+    <property name="lugar" type="string">
+      <column length="45" name="lugar" not-null="true"/>
+    </property>
+    <property name="fechaActual" type="date">
+      <column length="10" name="fecha_actual" not-null="true"/>
+    </property>
+    <set fetch="join" inverse="true" lazy="true" name="horarioses" table="horarios">
+      <key>
+        <column name="cargo" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Horario"/>
+    </set>
+  </class>
+</hibernate-mapping>

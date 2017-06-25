@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2017 23:12:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="ddjj" name="aplicacion.modelo.dominio.Horario" optimistic-lock="version" table="horarios">
+    <id name="codigo" type="int">
+      <column name="codigo"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.CargosDeclarado" fetch="select" name="cargosDeclarados">
+      <column name="cargo" not-null="true"/>
+    </many-to-one>
+    <property name="dia" type="string">
+      <column length="45" name="dia" not-null="true"/>
+    </property>
+    <property name="desde" type="double">
+      <column name="desde" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="hasta" type="double">
+      <column name="hasta" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="estado" type="boolean">
+      <column name="estado" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

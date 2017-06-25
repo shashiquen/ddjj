@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+      <h:form id="frmCargo">
+   <p:growl id="grl2"></p:growl>
+   
+    <!--comenzar-->
+    <p:panelGrid style="margin-top:20px">
+
+        <p:row>
+            <p:column  style="font-weight: bold;">Legajo N°</p:column>
+            <p:column  rowspan="2" style="font-weight: bold;">Apellidos</p:column>
+            <p:column  style="font-weight: bold;">Soltera</p:column>
+            <p:column  style="font-weight: bold;">Casada</p:column>
+
+
+            <p:column rowspan="2" style="font-weight: bold;">Fecha de Nacimiento: </p:column>
+            <p:column rowspan="2">
+                <p:outputLabel value="#{agenteFormBean.agenteBean.agente.fechaNac}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </p:outputLabel>
+
+            </p:column>
+
+
+
+        </p:row>
+        <p:row>
+            <p:column rowspan="2" styleClass="ui-widget-header"><p:outputLabel value="#{agenteFormBean.agenteBean.agente.legajo}"/></p:column>
+            <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.apellido}"/></p:column>
+            <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.apellidoCasada}"/></p:column>
+
+
+
+        </p:row>
+        <p:row>
+
+
+            <p:column colspan="3" >
+                <p:spacer height="0"/><label style="font-weight: bold;">Nombres:</label>
+                <p:outputLabel value="#{agenteFormBean.agenteBean.agente.nombre}"/>
+            </p:column>
+            <p:column  style="font-weight: bold;"><p:outputLabel value="#{agenteFormBean.agenteBean.agente.tipoIdentificadorLaboral}"/></p:column>
+            <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.numIdentificador}"/></p:column>
+
+        </p:row>
+
+
+    </p:panelGrid>
+    <!--finalizar-->
+
+
+    <p:panelGrid style="margin-top:20px">
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="12">
+                    <label style="font-weight: bold;">Datos relacionados con las funciones ,Cargos y Ocupaciones</label>
+                    <label>Declaracion Jurada N°</label>
+                </p:column>
+            
+            
+            </p:row>
+        </f:facet>
+        <p:row>
+            <p:column rowspan="13" style="font-weight: bold;" styleClass="ui-widget-header">4</p:column>
+            <p:column colspan="11" style="font-weight: bold;">Dependencia Oficina,Facultad</p:column>
+
+        </p:row>
+        <p:row>
+            <p:column colspan="11" style="font-weight: bold;">
+                <p:selectOneMenu id="lista" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.dependencia}">
+                                        <f:selectItem itemLabel="Ingenieria" itemValue="dni"/>
+                                        <f:selectItem itemLabel="Intemi" itemValue="lc"/>
+                                        <f:selectItem itemLabel="Aula 12" itemValue="le"/>
+                                    </p:selectOneMenu>
+            </p:column>
+        </p:row>
+         <p:row>
+            <p:column style="font-weight: bold;">Imputacion Presupuestaria</p:column>
+            <p:column style="font-weight: bold;">
+                
+                        <p:selectOneMenu id="list2" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.imputacionPresupuestaria}">
+                                        <f:selectItem itemLabel="Planta" itemValue="Planta"/>
+                                        <f:selectItem itemLabel="Contratado" itemValue="Contrato"/>
+                                        <f:selectItem itemLabel="Ordinaria" itemValue="Ordinaria"/>
+                                        <f:selectItem itemLabel="Interino" itemValue="Interino"/>
+                                        <f:selectItem itemLabel="Suplente" itemValue="Suplente"/>
+                        </p:selectOneMenu>
+                        
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column colspan="11" style="font-weight: bold;">Lugar donde desempeña funciones</p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">calle:
+                <p:inputText id="txtCalle" size="20" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.calle}" required="true"/>
+            </p:column>
+            <p:column style="font-weight: bold;">Numero:
+                <p:inputText id="txtNumCalle" size="20" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.numCalle}" required="true"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column colspan="11" style="font-weight: bold;">Localidad:
+                <p:inputText id="txtLocalidad1" size="60" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.localidad}" required="true"/>
+            
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column colspan="11" style="font-weight: bold;">Provincia:
+                <p:inputText id="txtProvincia1" size="60" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.provincia}" required="true"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">Funcion que desempeña</p:column>
+            <p:column style="font-weight: bold;">Ingreso</p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">
+               
+                <p:selectOneMenu id="list3"  converter="omnifaces.SelectItemsConverter" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.funciones}">
+                                 
+                    <f:selectItems value="#{funcionBean.obtenerFunciones()}" var="funcionSeleccionada"
+                                   itemLabel="#{funcionSeleccionada.nombre}"
+                                   itemValue="#{funcionSeleccionada}"/>  
+                                       
+                </p:selectOneMenu>
+                
+            </p:column>
+            <p:column style="font-weight: bold;">
+                <p:calendar id="txtFechaInicio" pattern="dd/MM/yyyy"
+                                                maxlength="10" size="10" required="true" locale="es"
+                                                value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.fechaIngreso}"
+                 />
+                
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column colspan="11" style="font-weight: bold;">Estado de Cargo o Funcion:
+            
+                
+                <p:selectOneMenu id="list4" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.estadoCargo}">
+                                        <f:selectItem itemLabel="En Actividad" itemValue="1"/>
+                                        <f:selectItem itemLabel="En licencia con Goce de haberes" itemValue="2"/>
+                                        <f:selectItem itemLabel="En licencia sin Goce de haberes" itemValue="3"/>
+                                     
+                        </p:selectOneMenu>
+                
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">Lugar</p:column>
+            <p:column style="font-weight: bold;">Fecha</p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">    
+                <p:inputText id="txtLugar1" size="30" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.lugar}" required="true"/>
+            
+            
+            </p:column>
+            <p:column style="font-weight: bold;">
+                <p:calendar id="txtFechaFinal" pattern="dd/MM/yyyy"
+                                                maxlength="10" size="10" required="true" locale="es"
+                                                value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.fechaActual}"
+                 />
+                 
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;">Dice si esta correcto los datos</p:column>
+            <p:column style="font-weight: bold;">
+                
+                <p:commandButton id="btnAceptar2"  value="Grabar Datos Ingresados" actionListener="#{cargoDeclaradoFormBean.agregarCargo()}" update="grl2,frmCargo"/>
+
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+    <p:commandButton id="btnModificar" value="Modificar" oncomplete="PF('modificarCargo').show();"/>
+
+</h:form>
+        <p:dialog id="dlgModificar" widgetVar="modificarCargo"
+                  modal="true" resizable="false"
+                  header="Formulario para modificar Cargo y Horario"
+                  showEffect="explode" hideEffect="explode">
+            <p:growl id="mensajeModificacionCategoria" showDetail="false"
+                     showSummary="true" sticky="false"/>
+            
+            <h:form id="frmModificacionCargo">
+                <h:panelGrid id="pnlBuscarLegajo" columns="2">
+                    <p:outputLabel for="txtLegajoModificacion" value="LEGAJO"/> 
+                    <p:inputText id="txtLegajoModificacion" />
+                    <p:commandButton value="Buscar"/> 
+                </h:panelGrid>
+                <h:panelGrid id="pnlModificacionCargo" columns="2">
+                    <p:outputLabel for="Funciones" value="Funciones que Desempeña"/>
+                    <p:selectOneMenu id="Funciones">
+                        
+                    </p:selectOneMenu>
+                    <p:outputLabel  for="Facultad" value="Dependencia Oficina,Facultad"/>
+                    <p:selectOneMenu id="Facultad" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.dependencia}">
+                             <f:selectItem itemLabel="Facultad De Ingenieria" itemValue="F.Ingenieria"/>
+                             <f:selectItem itemLabel="Facultad De Agraria" itemValue="F.Agraria"/>
+                             <f:selectItem itemLabel="Facultad De Cs Economica" itemValue="F.Cs Economica"/>
+                             <f:selectItem itemLabel="Facultad De Humanidades" itemValue="F.Humanidades"/>
+                             <f:selectItem itemLabel="Intemi" itemValue="Intemoi"/>
+                    
+                    </p:selectOneMenu>
+                    <p:outputLabel for="Imputacion" value="Imputacion Presopuestaria"/>
+                    <p:selectOneMenu id="Imputacion" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.imputacionPresupuestaria}">
+                               <f:selectItem itemLabel="Planta" itemValue="Planta"/>
+                               <f:selectItem itemLabel="Contratado" itemValue="Contrato"/>
+                               <f:selectItem itemLabel="Ordinaria" itemValue="Ordinaria"/>
+                               <f:selectItem itemLabel="Interino" itemValue="Interino"/>
+                               <f:selectItem itemLabel="Suplente" itemValue="Suplente"/>
+                    
+                    </p:selectOneMenu>
+                   </h:panelGrid>
+                    
+                    <p:panel header="Lugar donde desempeña sus actividades">
+                        <p:panelGrid columns="4">
+                        <p:outputLabel for="txtCalle" value="Calle:"/>
+                        <p:inputText id="txtCalle" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.calle}"/>
+                        <p:outputLabel for="txtNumero" value="Numero:"/>
+                        <p:inputText id="txtNumero" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.numCalle}"/>
+                        <p:outputLabel for="txtLocalidad" value="Localidad:"/>
+                        <p:inputText id="txtLocalidad" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.localidad}"/>
+                        <p:outputLabel for="txtProvincia" value="Provincia:"/>
+                        <p:inputText id="txtProvincia" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.provincia}"/>
+                        <p:outputLabel for="txtFechaIngreso" value="Fecha Ingreso:"/>
+                        <p:inputText id="txtFechaIngreso" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.fechaIngreso}"/>
+                        
+                        <p:outputLabel for="list4" value="Estado de cargo funcion"/>
+                         <p:selectOneMenu id="list4" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.estadoCargo}">
+                                        <f:selectItem itemLabel="En Actividad" itemValue="Actividad"/>
+                                        <f:selectItem itemLabel="En licencia con Goce de haberes" itemValue="licenciaHaberes"/>
+                                        <f:selectItem itemLabel="En licencia sin Goce de haberes" itemValue="licenciaSinHaberes"/>
+                                     
+                        </p:selectOneMenu>
+                        <p:outputLabel for="txtLugar" value="Lugar"/>
+                        <p:inputText id="txtLugar" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.lugar}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                   
+              
+ 
+            </h:form>
+           
+        </p:dialog>
+ </h:body>
+</html>
+

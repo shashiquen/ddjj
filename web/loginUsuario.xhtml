@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+        <ui:composition template="./templates/principal.xhtml">
+            <ui:define name="top">
+                <div id="tooplate_header">
+                    <div id="titulo">
+                        <br></br>
+                        <center><h1>DECLARACIÓN JURADA -Sistema de Ingreso de Datos-</h1></center>
+                    </div>
+                </div>
+
+                <div id="tooplate_middle">
+                    <h:form>
+                        <p:menubar>
+                            <p:submenu label="Archivo">                                                         
+                                <p:menuitem value="Salir" />  
+                            </p:submenu>
+                            <p:submenu label="Declaración Jurada">                                                         
+                                <p:menuitem value="Ingreso de datos" outcome="/menuInicial"/>  
+                                <p:menuitem value="Eliminar datos"/>
+                            </p:submenu>
+                            <p:menuitem value="A cerca de.."/>  
+                            <f:facet name="options">
+                                <p:outputLabel value="Bienvenido "/>
+                                <p:commandButton value="Cerrar Sesión" action="#{usuarioFormBean.cerrarSesion()}"/>
+                            </f:facet>
+                        </p:menubar>
+                    </h:form> 
+                </div> 
+            </ui:define>
+            <ui:define name="content">
+                <div class="conteiner">
+                    <p:panel header="Acceso al Sistema Declaracion Jurada" footer="APU 2008 - PROGRAMACION VISUAL 2017"> 
+                        <h:form id="frmLogin" >
+                            <p:growl id="mensajes" showDetail="false" sticky="false"/>
+
+                            <h:panelGrid id="pnlLogin" columns="2" >
+                                <p:outputLabel for="txtNombre" value="Usuario"/>
+                                <p:inputText id="txtNombre" value="#{usuarioFormBean.nombreUsuario}" required="true"/>
+                                <p:outputLabel for="txtPassword" value="Password"/>
+                                <p:password id="txtPassword" value="#{usuarioFormBean.password}" required="true"/>
+
+                                <p:commandButton id="btnAceptar" value="VALIDAR USUARIO"
+                                                 action="#{usuarioFormBean.validarUsuario()}" update="mensajes"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:panel>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmHorarios">
+            <h:panelGrid id="pnlEncabezadoHorario" columns="3">
+                <h:panelGrid id="pnlLegajo" columns="1">
+                    <p:outputLabel value="Legajo:"/>
+                    <p:outputLabel value=""/>
+
+
+                </h:panelGrid>
+                <h:panelGrid id="pnlDatos" columns="2" style="width: 350px;">
+                    <p:outputLabel for="txtApellido" value="ApellidoSoltera/o" />
+                    <p:outputLabel for="txtApellidoCasada" value="ApellidoCasada" />
+
+                    <p:outputLabel />
+                    <p:outputLabel />
+                    <p:outputLabel id="txtApellido" value="Apellidos:"/>
+                    <p:outputLabel id="txtApellidoCasada" value=""/>
+                    <p:outputLabel id="txtNom" value="Nombres:"/>
+                    <p:outputLabel  value=""/>
+                </h:panelGrid>
+                <h:panelGrid id="pnlD" columns="2">
+                    <p:outputLabel value="Fecha De Nacimiento:"/>
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value=""/>
+                </h:panelGrid>
+
+            </h:panelGrid>
+            <br></br><br></br>
+            <p:outputLabel value="CUADRO DEMOSTRATIVO DEL CUMPLIMIENTO DE LOS HORARIOS PARA LOS CARGOS Y ACTIVIDADES"/>
+            <h:panelGrid columns="2">
+
+                <p:panel header="HORARIOS" style="width: 650px;">
+                    <p:panelGrid id="pnlCargo" columns="1" >
+                        <p:outputLabel />
+
+                    </p:panelGrid>
+
+                </p:panel>
+
+
+                <p:panel header="TOTAL HORAS" style="width: 350px;">
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="DDJJ Actual:"/>
+                        <p:outputLabel value="TOTAL HS:"/>   
+                        <p:outputLabel value="T.PUNTOS:"/>   
+
+                    </h:panelGrid>
+                </p:panel>
+            </h:panelGrid>
+
+            <p:outputLabel value="Agregando Horario de"/>
+            <br></br>
+            <br></br>
+
+            <!-- TABLA HORARIOS-->
+
+            <p:dataTable id="tblHorarios" value="#{horarioFormBean.listaHorarios}" var="h" editable="true" editMode="true" editingRow="true">
+
+                <p:column headerText="Domingo"  >
+
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3" />
+                        <p:inputMask mask="99.99" size="3" />
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Lunes" >
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Martes">
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Miercoles">
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Jueves">
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Viernes">
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+                <p:column headerText="Sabado">
+                    <p:panelGrid columns="2"  >
+                        <p:inputMask mask="99.99" size="3"/>
+                        <p:inputMask mask="99.99" size="3"/>
+                    </p:panelGrid>
+                </p:column>
+
+
+            </p:dataTable>  
+
+
+            <p:panelGrid columns="4">
+                <p:commandButton value="Eliminar Horario"/>
+                <p:outputLabel value="Seleccione la Columna de Domingo para eliminar una fila del horario"/>
+                <p:commandButton value="Totalizar Horas"/>
+                <p:commandButton value="Nuevo Horario"/>
+            </p:panelGrid>
+
+        </h:form>
+
+    </h:body>
+</html>
+

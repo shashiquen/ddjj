@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2017 23:12:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="ddjj" name="aplicacion.modelo.dominio.Agente" optimistic-lock="version" table="agentes">
+    <id name="legajo" type="int">
+      <column name="legajo"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarios">
+      <column length="45" name="usuarios" not-null="true"/>
+    </many-to-one>
+    <property name="apellido" type="string">
+      <column length="45" name="apellido" not-null="true"/>
+    </property>
+    <property name="apellidoCasada" type="string">
+      <column length="45" name="apellido_casada"/>
+    </property>
+    <property name="numeroDocumento" type="java.math.BigDecimal">
+      <column name="numero_documento" not-null="true"/>
+    </property>
+    <property name="tipoDoc" type="string">
+      <column length="12" name="tipo_doc" not-null="true">
+        <comment>Formado por el tipo {DNI-LE-LC} - número</comment>
+      </column>
+    </property>
+    <property name="fechaNac" type="date">
+      <column length="10" name="fecha_nac" not-null="true"/>
+    </property>
+    <property name="nroMatricula" type="string">
+      <column length="20" name="nro_matricula"/>
+    </property>
+    <property name="sexo" type="char">
+      <column length="1" name="sexo" not-null="true"/>
+    </property>
+    <property name="estadoCivil" type="string">
+      <column length="10" name="estado_civil" not-null="true"/>
+    </property>
+    <property name="ocupacion" type="string">
+      <column length="45" name="ocupacion" not-null="true"/>
+    </property>
+    <property name="titulo" type="string">
+      <column length="45" name="titulo" not-null="true"/>
+    </property>
+    <property name="calle" type="string">
+      <column length="45" name="calle" not-null="true"/>
+    </property>
+    <property name="numCalle" type="int">
+      <column name="num_calle" not-null="true"/>
+    </property>
+    <property name="barrio" type="string">
+      <column length="45" name="barrio"/>
+    </property>
+    <property name="localidad" type="string">
+      <column length="45" name="localidad" not-null="true"/>
+    </property>
+    <property name="provincia" type="string">
+      <column length="45" name="provincia" not-null="true"/>
+    </property>
+    <property name="codPostal" type="int">
+      <column name="cod_postal" not-null="true"/>
+    </property>
+    <property name="mail" type="string">
+      <column length="60" name="mail" not-null="true"/>
+    </property>
+    <property name="estado" type="boolean">
+      <column name="estado" not-null="true"/>
+    </property>
+    <property name="telefono" type="int">
+      <column name="telefono" not-null="true"/>
+    </property>
+    <property name="tipoIdentificadorLaboral" type="string">
+      <column length="45" name="tipo_identificador_laboral" not-null="true"/>
+    </property>
+    <property name="numIdentificador" type="java.math.BigDecimal">
+      <column name="num_identificador" not-null="true"/>
+    </property>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre" not-null="true"/>
+    </property>
+    <set fetch="join" inverse="true" lazy="true" name="cargosDeclaradoses" table="cargos_declarados">
+      <key>
+        <column name="agente" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.CargosDeclarado"/>
+    </set>
+  </class>
+</hibernate-mapping>

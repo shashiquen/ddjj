@@ -1,0 +1,581 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/principal.xhtml">
+
+            <ui:define name="content">
+                <div id="tooplate_main">
+                    <p:panel>
+                        <p:outputLabel>UNIVERSIDAD NACIONAL DE JUJUY</p:outputLabel>
+                        <p:outputLabel />
+
+                        <h:panelGrid columns="2">
+                            <p:outputLabel>DECLARACION JURADA ----------------------------------------------------------------De los cargos y actividades que desempeña el causante</p:outputLabel>
+
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:tabView>
+                        <!-- PESTAÑA AGENTE -->
+                        <p:tab title="3 - 2 - 1">
+
+
+
+                            <h:form id="frmAgente">
+                                <p:growl id="mensajeAgente" showDetail="true"/>
+
+                                <p:panelGrid columns="8">
+
+                                    <p:outputLabel for="txtLegajo" value="Legajo N°"/>
+                                    <p:inputText id="txtLegajo" size="10" value="#{agenteFormBean.agenteBean.agente.legajo}" required="true">
+
+                                    </p:inputText>
+                                    <p:outputLabel />
+                                    <p:outputLabel value="L.C. o L.E." />
+                                    <p:outputLabel />
+                                    <p:outputLabel />
+                                    <p:outputLabel />
+                                    <p:outputLabel for="mnIdentificador" value="TipoDeIdentificador" />
+
+
+                                    <p:outputLabel for="txtDoc" value="Documento N°"/>
+                                    <p:inputMask mask="99999999" id="txtDoc" size="10" value="#{agenteFormBean.agenteBean.agente.numeroDocumento}" required="true"/>
+                                    <p:outputLabel for="mnTD" value="Tipo"/>
+                                    <p:selectOneMenu id="mnTD" value="#{agenteFormBean.agenteBean.agente.tipoDoc}">
+                                        <f:selectItem itemLabel="D.N.I" itemValue="dni"/>
+                                        <f:selectItem itemLabel="LC" itemValue="lc"/>
+                                        <f:selectItem itemLabel="LE" itemValue="le"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="txtFechaNacimiento" value="FechaNacimiento:"/>
+                                    <p:calendar id="txtFechaNacimiento" pattern="dd/MM/yyyy"
+                                                maxlength="10" size="10" required="true" locale="es"
+                                                value="#{agenteFormBean.agenteBean.agente.fechaNac}"/>
+                                    <p:outputLabel />
+
+                                    <p:selectOneMenu id="mnIdentificador" value="#{agenteFormBean.agenteBean.agente.tipoIdentificadorLaboral}" required="true">
+                                        <f:selectItem itemLabel="CUIL" itemValue="cuil"/>
+                                        <f:selectItem itemLabel="CUIT" itemValue="cuit"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="txtMatricula" value="Matricula N°:"/>
+                                    <p:inputText id="txtMatricula" size="10" value="#{agenteFormBean.agenteBean.agente.nroMatricula}" required="true"/>
+
+
+                                    <p:outputLabel for="mnSexo" value="Sexo:"/>
+                                    <p:selectOneMenu id="mnSexo" value="#{agenteFormBean.agenteBean.agente.sexo}" required="true">
+                                        <f:selectItem itemLabel="F" itemValue="f"/>
+                                        <f:selectItem itemLabel="M" itemValue="m"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="mnestadoCivil" value="E. Civil:"/>
+                                    <p:selectOneMenu id="mnestadoCivil" value="#{agenteFormBean.agenteBean.agente.estadoCivil}" required="true">
+                                        <f:selectItem itemLabel="Soltero/a" itemValue="soltera/o"/>
+                                        <f:selectItem itemLabel="Casado/a" itemValue="casada"/>
+                                        <f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+                                        <f:selectItem itemLabel="Viudo" itemValue="Viudo" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="txtCuil" value="N°DeCuil/t:"/>
+                                    <p:inputText id="txtCuil" size="17" value="#{agenteFormBean.agenteBean.agente.numIdentificador}" required="true"/>
+
+                                </p:panelGrid>
+                                <p:panelGrid columns="5">
+                                    <p:outputLabel />
+
+                                    <p:outputLabel for="txtApellido" value="ApellidoSoltera/o:" />
+                                    <p:outputLabel for="txtApellidoCasada" value="ApellidoCasada:" />
+
+                                    <p:outputLabel />
+                                    <p:outputLabel />
+
+                                    <p:outputLabel value="Apellidos"/>
+                                    <p:inputText id="txtApellido" size="22" value="#{agenteFormBean.agenteBean.agente.apellido}" />
+
+                                    <p:inputText id="txtApellidoCasada" size="24" value="#{agenteFormBean.agenteBean.agente.apellidoCasada}" />
+
+                                    <p:outputLabel for="txtOcupacion" value="Ocupacion"/>
+                                    <p:inputText id="txtOcupacion" size="35" value="#{agenteFormBean.agenteBean.agente.ocupacion}" required="true"/>  
+                                </p:panelGrid>
+                                <p:panelGrid columns="4">
+                                    <p:outputLabel for="txtNombre" value="Nombre:"/>
+                                    <p:inputText id="txtNombre" value="#{agenteFormBean.agenteBean.agente.nombre}"/>
+                                    <p:outputLabel for="txtTitulo" value="Titulo:"/>
+                                    <p:inputText id="txtTitulo" value="#{agenteFormBean.agenteBean.agente.titulo}"/>
+
+                                </p:panelGrid>
+                                <p:panelGrid columns="6">
+                                    <p:outputLabel for="txtCalle" value="Calle"/>
+                                    <p:inputText id="txtCalle" value="#{agenteFormBean.agenteBean.agente.calle}" size="34" required="true"/>
+                                    <p:outputLabel for="txtNCalle" value="N°" />
+                                    <p:inputText id="txtNCalle" size="7" value="#{agenteFormBean.agenteBean.agente.numCalle}" required="true"/>  
+                                    <p:outputLabel for="txtBarrio" value="Barrio"/>
+                                    <p:inputText id="txtBarrio" size="39" value="#{agenteFormBean.agenteBean.agente.barrio}" required="true"/>           
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="6">
+                                    <p:outputLabel for="txtLocalidad" value="Localidad"/>
+                                    <p:inputText id="txtLocalidad" size="49" value="#{agenteFormBean.agenteBean.agente.localidad}" required="true"/>
+                                    <p:outputLabel for="txtProvincia" value="Provincia"/>
+                                    <p:inputText id="txtProvincia" size="20" value="#{agenteFormBean.agenteBean.agente.provincia}" required="true"/>     
+                                    <p:outputLabel for="txtCp" value="CP"/>
+                                    <p:inputText id="txtCp" size="5" value="#{agenteFormBean.agenteBean.agente.codPostal}" required="true"/>   
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4">
+                                    <p:outputLabel for="txtTelefono" value="Telefono"/>
+                                    <p:inputText id="txtTelefono" size="49" value="#{agenteFormBean.agenteBean.agente.telefono}" required="true"/>
+
+                                    <p:outputLabel for="txtCE" value="CorreoElectronico"/>
+                                    <p:inputText id="txtCE" size="31" value="#{agenteFormBean.agenteBean.agente.mail}" required="true">
+                                        <f:validator validatorId="custom.emailValidator"/>
+                                    </p:inputText>
+                                </p:panelGrid>
+                                <p:commandButton value="Nueva DDJJ o Modificar Datos Ingresados" actionListener="#{agenteFormBean.modificarAgente()}" update="frmAgente,mensajeAgente">
+                                    <p:confirm header="Pedido de Confirmacion"
+                                               message="¿Confirmar modificar Agente?" icon="ui-icon-alert"/>
+
+                                </p:commandButton>
+                                <p:commandButton id="btnAceptar"  value="Grabar Datos Ingresados" actionListener="#{agenteFormBean.agregarAgente()}" update="frmAgente,mensajeAgente">
+                                    <p:confirm header="Pedido de Confirmacion"
+                                               message="¿Confirmar agregar Agente?" icon="ui-icon-alert"/>
+
+                                </p:commandButton>
+
+
+                            </h:form>
+                            <h:form id="frmConfirmacionOperacionAgente">
+                                <p:confirmDialog id="confirmacionDialogoAgente"
+                                                 global="true" showEffect="fade" hideEffect="fade">
+
+                                    <p:commandButton value="SI" type="button"
+                                                     styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                    <p:commandButton value="NO" type="button"
+                                                     styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+                                                     style="float: right;"/>
+                                </p:confirmDialog>
+
+                            </h:form>
+
+
+                        </p:tab>
+
+
+
+                        <!-- PESTAÑA CARGO FUNCION-->
+
+                        <p:tab title="4">
+
+
+                            <h:form id="frmCargo">
+                                <p:growl id="grl2"></p:growl>
+
+                                <!--comenzar-->
+                                <p:panelGrid style="margin-top:20px">
+
+                                    <p:row>
+                                        <p:column  style="font-weight: bold;">Legajo N°</p:column>
+                                        <p:column  rowspan="2" style="font-weight: bold;">Apellidos</p:column>
+                                        <p:column  style="font-weight: bold;">Soltera</p:column>
+                                        <p:column  style="font-weight: bold;">Casada</p:column>
+
+
+                                        <p:column rowspan="2" style="font-weight: bold;">Fecha de Nacimiento: </p:column>
+                                        <p:column rowspan="2">
+                                            <p:outputLabel value="#{agenteFormBean.agenteBean.agente.fechaNac}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </p:outputLabel>
+
+                                        </p:column>
+
+
+
+                                    </p:row>
+                                    <p:row>
+                                        <p:column rowspan="2" styleClass="ui-widget-header"><p:outputLabel value="#{agenteFormBean.agenteBean.agente.legajo}"/></p:column>
+                                        <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.apellido}"/></p:column>
+                                        <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.apellidoCasada}"/></p:column>
+
+                                    </p:row>
+                                    <p:row>
+
+
+                                        <p:column colspan="3" >
+                                            <p:spacer height="0"/><label style="font-weight: bold;">Nombres:</label>
+                                            <p:outputLabel value="#{agenteFormBean.agenteBean.agente.nombre}"/>
+                                        </p:column>
+                                        <p:column  style="font-weight: bold;"><p:outputLabel value="#{agenteFormBean.agenteBean.agente.tipoIdentificadorLaboral}"/></p:column>
+                                        <p:column  ><p:outputLabel value="#{agenteFormBean.agenteBean.agente.numIdentificador}"/></p:column>
+
+                                    </p:row>
+
+
+                                </p:panelGrid>
+                                <!--finalizar-->
+
+
+                                <p:panelGrid style="margin-top:20px">
+                                    <f:facet name="header">
+                                        <p:row>
+                                            <p:column colspan="12">
+                                                <label style="font-weight: bold;">Datos relacionados con las funciones ,Cargos y Ocupaciones</label>
+                                                <label>Declaracion Jurada N°</label>
+                                            </p:column>
+
+
+                                        </p:row>
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="13" style="font-weight: bold;" styleClass="ui-widget-header">4</p:column>
+                                        <p:column colspan="11" style="font-weight: bold;">Dependencia Oficina,Facultad</p:column>
+
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="11" style="font-weight: bold;">
+                                            <p:selectOneMenu id="lista" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.dependencia}">
+                                                <f:selectItem itemLabel="Facultad De Ingenieria" itemValue="F.Ingenieria"/>
+                                                <f:selectItem itemLabel="Facultad De Agraria" itemValue="F.Agraria"/>
+                                                <f:selectItem itemLabel="Facultad De Cs Economica" itemValue="F.Cs Economica"/>
+                                                <f:selectItem itemLabel="Facultad De Humanidades" itemValue="F.Humanidades"/>
+                                                <f:selectItem itemLabel="Intemi" itemValue="Intemi"/>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Imputacion Presupuestaria</p:column>
+                                        <p:column style="font-weight: bold;">
+
+                                            <p:selectOneMenu id="list2" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.imputacionPresupuestaria}">
+                                                <f:selectItem itemLabel="Planta" itemValue="Planta"/>
+                                                <f:selectItem itemLabel="Contratado" itemValue="Contrato"/>
+                                                <f:selectItem itemLabel="Ordinaria" itemValue="Ordinaria"/>
+                                                <f:selectItem itemLabel="Interino" itemValue="Interino"/>
+                                                <f:selectItem itemLabel="Suplente" itemValue="Suplente"/>
+                                            </p:selectOneMenu>
+
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="11" style="font-weight: bold;">Lugar donde desempeña funciones</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">calle:
+                                            <p:inputText id="txtCalle" size="20" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.calle}" required="true"/>
+                                        </p:column>
+                                        <p:column style="font-weight: bold;">Numero:
+                                            <p:inputText id="txtNumCalle" size="20" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.numCalle}" required="true"/>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="11" style="font-weight: bold;">Localidad:
+                                            <p:inputText id="txtLocalidad1" size="60" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.localidad}" required="true"/>
+
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="11" style="font-weight: bold;">Provincia:
+                                            <p:inputText id="txtProvincia1" size="60" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.provincia}" required="true"/>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Funcion que desempeña</p:column>
+                                        <p:column style="font-weight: bold;">Ingreso</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">
+
+                                            <p:selectOneMenu id="list3"  converter="omnifaces.SelectItemsConverter" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.funciones}">
+
+                                                <f:selectItems value="#{funcionBean.obtenerFunciones()}" var="funcionSeleccionada"
+                                                               itemLabel="#{funcionSeleccionada.nombre}"
+                                                               itemValue="#{funcionSeleccionada}"/>  
+
+                                            </p:selectOneMenu>
+
+                                        </p:column>
+                                        <p:column style="font-weight: bold;">
+                                            <p:calendar id="txtFechaInicio" pattern="dd/MM/yyyy"
+                                                        maxlength="10" size="10" required="true" locale="es"
+                                                        value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.fechaIngreso}"
+                                                        />
+
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="11" style="font-weight: bold;">Estado de Cargo o Funcion:
+
+
+                                            <p:selectOneMenu id="list4" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.estadoCargo}">
+                                                <f:selectItem itemLabel="En Actividad" itemValue="Actividad"/>
+                                                <f:selectItem itemLabel="En licencia con Goce de haberes" itemValue="licenciaHaberes"/>
+                                                <f:selectItem itemLabel="En licencia sin Goce de haberes" itemValue="licenciaSinHaberes"/>
+
+                                            </p:selectOneMenu>
+
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Lugar</p:column>
+                                        <p:column style="font-weight: bold;">Fecha</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">    
+                                            <p:inputText id="txtLugar1" size="30" value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.lugar}" required="true"/>
+
+
+                                        </p:column>
+                                        <p:column style="font-weight: bold;">
+                                            <p:calendar id="txtFechaFinal" pattern="dd/MM/yyyy"
+                                                        maxlength="10" size="10" required="true" locale="es"
+                                                        value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.fechaActual}"
+                                                        />
+
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Dice si esta correcto los datos</p:column>
+                                        <p:column style="font-weight: bold;">
+
+                                            <p:commandButton id="btnAceptar2"  value="Grabar Datos Ingresados" actionListener="#{cargoDeclaradoFormBean.agregarCargo()}" update="grl2,frmCargo">
+
+                                                <p:confirm header="Pedido de Confirmacion"
+                                                           message="¿Confirmar agregar Cargo?" icon="ui-icon-alert"/>
+                                            </p:commandButton>
+
+                                        </p:column>
+                                    </p:row>
+
+
+
+                                </p:panelGrid>
+                                <p:commandButton id="btnModificar" value="Modificar" actionListener="#{cargoDeclaradoFormBean.modificarCargo()}" update="grl2,frmCargo"/>    
+
+                                <h:form id="frmConfirmacionOperacionCargo">
+                                    <p:confirmDialog id="confirmacionDialogoCargo"
+                                                     global="true" showEffect="fade" hideEffect="fade">
+
+                                        <p:commandButton value="Si" type="button"
+                                                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                        <p:commandButton value="No" type="button"
+                                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+                                                         style="float: right;"/>
+                                    </p:confirmDialog>
+                                </h:form>            
+
+
+
+                            </h:form>
+
+                            <!-- FORMULARIO MODIFICACION -->                   
+
+
+
+
+
+                        </p:tab>
+
+                        <p:tab title="5">                                
+                        </p:tab>
+                        <p:tab title="6">                                
+                        </p:tab>
+                        <p:tab title="7">                                
+                        </p:tab>
+                        <p:tab title="8">                               
+                        </p:tab>
+
+                        <!-- PESTAÑA HORARIO-->
+
+                        <p:tab title="HORARIO">
+                            <h:form id="frmHorarios">
+                                <h:panelGrid id="pnlEncabezadoHorario" columns="3">
+                                    <h:panelGrid id="pnlLegajo" columns="1">
+                                        <p:outputLabel value="Legajo:"/>
+                                        <p:outputLabel value="#{agenteFormBean.agenteBean.agente.legajo}"/>
+
+
+                                    </h:panelGrid>
+                                    <h:panelGrid id="pnlDatos" columns="2" style="width: 350px;">
+                                        <p:outputLabel for="txtApellido" value="ApellidoSoltera/o" />
+                                        <p:outputLabel for="txtApellidoCasada" value="ApellidoCasada" />
+
+                                        <p:outputLabel />
+                                        <p:outputLabel />
+                                        <p:outputLabel id="txtApellido" value="Apellidos:#{agenteFormBean.agenteBean.agente.apellido}"/>
+                                        <p:outputLabel id="txtApellidoCasada" value="#{agenteFormBean.agenteBean.agente.apellidoCasada}"/>
+                                        <p:outputLabel id="txtNom" value="Nombres:"/>
+                                        <p:outputLabel  value="#{agenteFormBean.agenteBean.agente.nombre}"/>
+                                    </h:panelGrid>
+                                    <h:panelGrid id="pnlD" columns="2">
+                                        <p:outputLabel value="Fecha De Nacimiento:"/>
+                                        <p:outputLabel value="#{agenteFormBean.agenteBean.agente.fechaNac}"/>
+                                        <p:outputLabel value="#{agenteFormBean.agenteBean.agente.tipoIdentificadorLaboral}"/>
+                                        <p:outputLabel value="#{agenteFormBean.agenteBean.agente.numIdentificador}"/>
+                                    </h:panelGrid>
+
+                                </h:panelGrid>
+                                <br></br><br></br>
+                                <p:outputLabel value="CUADRO DEMOSTRATIVO DEL CUMPLIMIENTO DE LOS HORARIOS PARA LOS CARGOS Y ACTIVIDADES"/>
+                                <h:panelGrid columns="2">
+
+                                    <p:panel header="HORARIOS" style="width: 650px;">
+                                        <p:panelGrid id="pnlCargo" columns="1" >
+                                            <p:outputLabel value="#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.funciones.nombre}"/>
+
+                                        </p:panelGrid>
+
+                                    </p:panel>
+
+
+                                    <p:panel header="TOTAL HORAS" style="width: 350px;">
+                                        <h:panelGrid columns="1">
+                                            <p:outputLabel value="DDJJ Actual:"/>
+                                            <p:outputLabel value="TOTAL HS:"/>   
+                                            <p:outputLabel value="T.PUNTOS:"/>   
+
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </h:panelGrid>
+
+                                <p:outputLabel value="Agregando Horario de :#{cargoDeclaradoFormBean.cargoBean.cargoDeclarado.funciones.nombre}"/>
+                                <br></br>
+                                <br></br>
+
+                                <!-- TABLA HORARIOS-->
+                                <p:panelGrid columns="2">
+                                    <h:outputLabel for="item" value="Item Name: " />
+                                    <p:inputText  value="#{horarioFormBean.dia}"/>
+                                    <h:outputLabel for="qty" value="Qyantity: " />
+                                    <p:inputText value="#{horarioFormBean.diaDesde}"/>
+                                    <h:outputLabel for="price" value="Price: " />
+                                    <p:inputText  value="#{horarioFormBean.diaHasta}"/>
+                                    <f:facet name="footer">
+                                        <h:commandButton value="Add Item" action="#{horarioFormBean.addAction}"/>
+                                    </f:facet>
+                                </p:panelGrid>
+                                <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />
+                                <hr/>
+                                <p:dataTable id="listaHora" var="car" value="#{horarioFormBean.listaHoras}" editable="true" style="margin-bottom:20px">
+                                    <f:facet name="header">
+                                        Row Editing
+                                    </f:facet>
+
+                                    <p:ajax event="rowEdit" listener="#{horarioFormBean.onRowEdit}"/>
+                                    <p:ajax event="rowEditCancel" listener="#{horarioFormBean.onRowCancel}" />
+
+                                    <p:column headerText="Id">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{car.domingoDesde}" /></f:facet>
+                                            <f:facet name="input"><p:inputText id="domingoDesde" value="#{car.domingoDesde}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+
+                                    <p:column headerText="Year">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{car.domindoHasta}" /></f:facet>
+                                            <f:facet name="input"><p:inputText id="domindoHasta" value="#{car.domindoHasta}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+
+                                    <p:column headerText="Brand">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{car.lunesDesde}" /></f:facet>
+                                            <f:facet name="input"><p:inputText id="lunesDesde" value="#{car.lunesDesde}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+
+                                    <p:column headerText="Color">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{car.lunesHasta}" /></f:facet>
+                                            <f:facet name="input"><p:inputText id="lunesHasta" value="#{car.lunesHasta}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+
+                                    <p:column style="width:32px">
+                                        <p:rowEditor />
+                                    </p:column>
+                                </p:dataTable>
+
+                                <p:dataTable id="tblHorarios" value="#{horarioFormBean.listaHorarios}" var="h" rows="3">
+
+                                    <p:column headerText="Domingo" >
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask id="txt1" mask="99.99" size="3"/>
+                                            <p:inputMask  id="txt2" mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Lunes">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Martes">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Miercoles">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Jueves">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Viernes">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                    <p:column headerText="Sabado">
+                                        <p:panelGrid columns="2"  >
+                                            <p:inputMask mask="99.99" size="3"/>
+                                            <p:inputMask mask="99.99" size="3"/>
+                                        </p:panelGrid>
+                                    </p:column>
+
+
+                                </p:dataTable>  
+
+
+                                <p:panelGrid columns="4">
+                                    <p:commandButton value="Eliminar Horario"/>
+                                    <p:outputLabel value="Seleccione la Columna de Domingo para eliminar una fila del horario"/>
+                                    <p:commandButton value="Totalizar Horas"/>
+                                    <p:commandButton value="Nuevo Horario"/>
+                                </p:panelGrid>
+
+                            </h:form>
+
+                        </p:tab>
+                    </p:tabView>
+
+                    <p:panel>
+                        <h:form>
+                            <p:commandButton value="Generar Diskette" />
+                            <p:commandButton value="Anterior" />
+                            <p:commandButton value="Siguiente" />
+                            <p:commandButton value="Ampliar Declaracion" />
+                            <p:commandButton value="Imprimir Formulario DDJJ" />
+                            <p:commandButton value="Salir" />
+                        </h:form>
+                    </p:panel>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
